@@ -15,4 +15,4 @@ module.exports = {
   run() {
     return console.info(HELP_MESSAGE);
   }
-}
+};

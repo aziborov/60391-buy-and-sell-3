@@ -1,12 +1,11 @@
 'use strict';
 
 const ExitCode = {
-  success : 0,
-  error : 1
+  SUCCESS: 0,
+  ERROR: 1
 };
 
 module.exports = {
-  DEFAULT_COMMAND : `--help`,
-  USER_ARGV_INDEX : 2,
-  ExitCode : ExitCode
+  DEFAULT_COMMAND: `--help`,
+  ExitCode
 };

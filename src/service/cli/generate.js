@@ -6,7 +6,7 @@ const {
   getRandomInt,
   shuffle,
   getPictureFileName,
-} = require(`../cli/utils`);
+} = require(`./utils`);
 
 
 const {
@@ -70,12 +70,12 @@ const SumRestrict = {
 const PictureRestrict = {
   MIN: 1,
   MAX: 16,
-}
+};
 
 const CategoryRestrict = {
   MIN: 1,
   MAX: 16,
-}
+};
 
 const generateOffers = (count) => (
   Array(count).fill({}).map(() => ({
@@ -92,18 +92,18 @@ module.exports = {
   name: `--generate`,
   run(args) {
     const [count] = args;
-    const countOffer = Number.parseInt(count,10) || DEFAULT_COUNT;
+    const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     if (countOffer > 1000) {
       return console.info(`Не больше 1000 объявлений.`);
     }
-    const content = JSON.stringify(generateOffers(countOffer), null, ' ');
+    const content = JSON.stringify(generateOffers(countOffer), null, 2);
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
         process.exitCode = ExitCode.error;
-        return console.error(`Невозможно создать файл с данными...`);
+        console.error(`Невозможно создать файл с данными...`);
       }
       process.exitCode = ExitCode.success;
-      return console.info(`Операция успешно завершена, создан файл с данными.`);
-    })
-  }
-}
+      console.info(`Операция успешно завершена, создан файл с данными.`);
+    });
+  },
+};
